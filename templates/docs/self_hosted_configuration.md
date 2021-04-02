@@ -379,7 +379,7 @@ Healthchecks supports external authentication by means of HTTP headers set by
 reverse proxies or the WSGI server. This allows you to integrate it into your
 existing authentication system (e.g., LDAP or OAuth) via an authenticating proxy. When this option is enabled, **Healtchecks will trust the header's value implicitly**, so it is **very important** to ensure that attackers cannot set the value themselves (and thus impersonate any user). How to do this varies by your chosen proxy, but generally involves configuring it to strip out headers that normalize to the same name as the chosen identity header.
 
-To enable this feature, set the `REMOTE_USER_HEADER` value to a header you wish to authenticate with. HTTP headers will be prefixed with `HTTP_` and have any dashes converted to underscores. Headers without that prefix can be set by the WSGI server itself only, which is more secure.
+To enable this feature, set the `REMOTE_USER_HEADER` value to a header you wish to authenticate with. HTTP headers will be prefixed with `HTTP_`, have any dashes converted to underscores and will be converted to uppercase. Headers without that prefix can be set by the WSGI server itself only, which is more secure.
 
 When `REMOTE_USER_HEADER` is set, Healthchecks will:
 
